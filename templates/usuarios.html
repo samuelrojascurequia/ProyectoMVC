@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block contenido %}
+      <h1 style="color: darkcyan; font-family: fantasy;">{{titulo}}</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre completo</th>
+            <th scope="col">Email</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Cargo-puesto</th> 
+            <th scope="col">Documento de identificacion</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Armando Perez Ramirez</td>
+            <td>Armando@gmail.com</td>
+            <td>Administrador</td>
+            <td>Gerente</td>
+            <td>8274017394</td>
+          <td>
+            <button type="button" class="btn btn-success">Editar</button>
+              <button type="button" class="btn btn-danger">Borrar</button>
+          </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Francisco Arias Gomez</td>
+            <td>Francisco@gmail.com</td>
+            <td>Contador</td>
+            <td>Contador</td>
+            <td>2940374856</td>
+          <td>
+            <button type="button" class="btn btn-success">Editar</button>
+              <button type="button" class="btn btn-danger">Borrar</button>
+          </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Luis Rodriguez Garcia</td>
+            <td>Luis@gmail.com</td>
+            <td>Cajero o facturador</td>
+            <td>Cajero</td>
+            <td>7439401737</td>
+          <td>
+            <button type="button" class="btn btn-success">Editar</button>
+              <button type="button" class="btn btn-danger">Borrar</button>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+{% endblock contenido %}

@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block contenido %}
+      <h1 style="color: darkcyan; font-family: fantasy;">{{titulo}}</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Numero</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Fecha emision</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Total</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Emiro Vargas Rua</td>
+            <td>01/12/2024</td>
+            <td>Salchichon 300gr</td>
+            <td>12000</td>
+            <td>Pagada</td>
+            <td>
+                <button type="button" class="btn btn-success">Editar</button>
+                  <button type="button" class="btn btn-danger">Borrar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Juan Roa Duque</td>
+            <td>17/01/2025</td>
+            <td>Pan integral 200gr</td>
+            <td>9000</td>
+            <td>Pendiente</td>
+            <td>
+                <button type="button" class="btn btn-success">Editar</button>
+                  <button type="button" class="btn btn-danger">Borrar</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Alberto Gomez Sanchez</td>
+            <td>26/02/2025</td>
+            <td>Mantequilla 300gr</td>
+            <td>5000</td>
+            <td>Pagada</td>
+            <td>
+                <button type="button" class="btn btn-success">Editar</button>
+                  <button type="button" class="btn btn-danger">Borrar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+{% endblock contenido %}
