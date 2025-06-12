@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Float, Numeric, ForeignKey, crea
 from sqlalchemy.orm import sessionmaker, declarative_base
 import pymysql
 
-engine = create_engine("mysql+pymysql://root@localhost/factura234?charset=utf8mb4") 
+engine = create_engine("mysql+pymysql://root@localhost/factura2345?charset=utf8mb4") 
 
 connection = engine.connect()
 

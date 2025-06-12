@@ -5,51 +5,33 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Numero</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Fecha emision</th>
             <th scope="col">Descripcion</th>
-            <th scope="col">Total</th>
-            <th scope="col">Estado</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Precio unitario</th>
+            <th scope="col">Nombre del vendedor</th>
+            <th scope="col">Metodo de pago</th>
+            <th scope="col">Nombre comprador</th>
+            <th scope="col">Documento de identidad</th>
+            <th scope="col">Telefono</th>
           </tr>
         </thead>
         <tbody>
+          {% for factura in facturas %}
           <tr>
-            <th scope="row">1</th>
-            <td>Emiro Vargas Rua</td>
-            <td>01/12/2024</td>
-            <td>Salchichon 300gr</td>
-            <td>12000</td>
-            <td>Pagada</td>
+            <th scope="row">{{factura.descripcion}}</th>
+            <td>{{factura.codigo}}</td>
+            <td>{{factura.precio_unitario}}</td>           
+            <td>{{factura.nombre_vendedor}}</td>
+            <td>{{factura.metodo_pago}}</td>
+            <td>{{factura.nombre_comprador}}</td>
+            <td>{{factura.documento_identidad}}</td>
+            <td>{{factura.telefono}}</td>
             <td>
-                <button type="button" class="btn btn-success">Editar</button>
-                  <button type="button" class="btn btn-danger">Borrar</button>
+              <button type="button" class="btn btn-success">Editar</button>
+              <button type="button" class="btn btn-danger">Borrar</button>
             </td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Juan Roa Duque</td>
-            <td>17/01/2025</td>
-            <td>Pan integral 200gr</td>
-            <td>9000</td>
-            <td>Pendiente</td>
-            <td>
-                <button type="button" class="btn btn-success">Editar</button>
-                  <button type="button" class="btn btn-danger">Borrar</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Alberto Gomez Sanchez</td>
-            <td>26/02/2025</td>
-            <td>Mantequilla 300gr</td>
-            <td>5000</td>
-            <td>Pagada</td>
-            <td>
-                <button type="button" class="btn btn-success">Editar</button>
-                  <button type="button" class="btn btn-danger">Borrar</button>
-            </td>
-          </tr>
+          {% endfor %} 
         </tbody>
       </table>
 {% endblock contenido %}

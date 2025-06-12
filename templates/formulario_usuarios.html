@@ -2,69 +2,73 @@
 
 {% block contenido %}
   <h1 style="color: darkcyan; font-family: fantasy;"> {{titulo}}</h1>
+  <form action="/formulario_usuarios" method="post">
   <form class="needs-validation" novalidate>
         <div class="form-row">
           <div class="col-md-4 mb-3">
-            <label for="validationTooltip01">Nombres</label>
-            <input type="text" class="form-control" id="validationTooltip01" placeholder="Nombres" value="Nombres" required>
+            <label for="nombres">Nombres</label>
+            <input type="text" class="form-control" name="nombres" {% if usuario_almacenar %} value="{{ usuario_almacenar.nombres }}" {% endif %} id="nombres" placeholder="Nombres" value="Nombres" required>
             <div class="valid-tooltip">
               Por favor ingresar un nombre
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <label for="validationTooltip02">Apellidos</label>
-            <input type="text" class="form-control" id="validationTooltip02" placeholder="Apellidos" value="Apellidos" required>
+            <label for="apellidos">Apellidos</label>
+            <input type="text" class="form-control" name="apellidos" {% if usuario_almacenar %} value="{{ usuario_almacenar.apellidos }}" {% endif %} id="apellidos" placeholder="Apellidos" value="Apellidos" required>
             <div class="valid-tooltip">
               por favor ingresar algun caracter
             </div>
           </div>
           <div class="col-md-4 mb-3">
-            <label for="validationTooltipUsername">Correo electronico</label>
+            <label for="email">Email</label>
             <div class="input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                <span class="input-group-text"  id="email">@</span>
               </div>
-              <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Email" aria-describedby="validationTooltipUsernamePrepend" required>
+              <input type="text" class="form-control" name="email" {% if usuario_almacenar %} value="{{ usuario_almacenar.email }}" {% endif %} id="email" placeholder="Email" aria-describedby="validationTooltipUsernamePrepend" required>
               <div class="invalid-tooltip">
                 Por favor poner un usuario valido.
               </div>
             </div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <label for="validationTooltip03">Rol o tipo de usuario</label>
-            <input type="text" class="form-control" id="validationTooltip03" placeholder="Rol o tipo de usuario" required>
+         <div class="form-row">
+          <div class="col-md-3 mb-3">
+            <label for="direccion">Direccion</label>
+            <input type="text" class="form-control" name="direccion" {% if usuario_almacenar %} value="{{ usuario_almacenar.direccion }}" {% endif %} id="direccion" placeholder="Direccion" required>
             <div class="invalid-tooltip">
-              Indique un Rol valida.
+              Indique su direccion.
             </div>
           </div>
           <div class="col-md-3 mb-3">
-            <label for="validationTooltip04">Cargo o puesto</label>
-            <input type="text" class="form-control" id="validationTooltip04" placeholder="Cargo o puesto" required>
+            <label for="telefono">Telefono</label>
+            <input type="text" class="form-control" name="telefono" {% if usuario_almacenar %} value="{{ usuario_almacenar.telefono }}" {% endif %} id="telefono" placeholder="Telefono" required>
             <div class="invalid-tooltip">
-              Indique un cargo valido.
+              Indique su numero Telefono.
             </div>
           </div>
           <div class="col-md-3 mb-3">
-            <label for="validationTooltip05">Documento de identidad</label>
-            <input type="text" class="form-control" id="validationTooltip05" placeholder="Documento de identidad" required>
+            <label for="documento_identidad">Documento de identidad</label>
+            <input type="text" class="form-control" name="documento_identidad" {% if usuario_almacenar %} value="{{ usuario_almacenar.documento_identidad }}" {% endif %} id="documento_identidad" placeholder="Documento de identidad" required>
             <div class="invalid-tooltip">
               Indique su numero de identidad.
             </div>
           </div>
+           <div class="form-group col-md-4">
+            <label for="puesto">Puesto</label>
+            <select id="puesto" name="puesto" class="form-control">
+              <option selected>Por favor seleccione...</option>
+              <option value="gerente">Gerente</option>
+              <option value="empleado">Empleado</option>
+            </select>
+          </div>
+          </div>
           <div class="col-md-3 mb-3">
-            <label for="validationTooltip04">Establezca una contraseña</label>
-            <input type="text" class="form-control" id="validationTooltip04" placeholder="contraseña" required>
+            <label for="contraseña">Contraseña</label>
+            <input type="text" class="form-control" name="contraseña" {% if usuario_almacenar %} value="{{ usuario_almacenar.contraseña}}" {% endif %} id="contraseña" placeholder="Establezca una Contraseña" required>
             <div class="invalid-tooltip">
               Establezca su contraseña.
             </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="validationTooltip04">Confirme su contraseña</label>
-            <input type="text" class="form-control" id="validationTooltip04" placeholder="contraseña" required>
-            <div class="invalid-tooltip">
-              Confirme su contraseña.
           </div>
             <br>
           <div class="container d-flex justify-content-left">

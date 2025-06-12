@@ -8,8 +8,8 @@ class Productos(Base):
     codigo = Column(String(9), unique=True, nullable=False)
     descripcion = Column(String(300), unique=True)
     unidad_medida = Column(String(3), nullable=False)
-    cantidad_inventario = Column(Numeric(10,2), nullable=False)
-    precio_unitario = Column(Numeric(10,2), nullable=False)
+    cantidad_inventario = Column(String(100), nullable=False)
+    precio_unitario = Column(String(300), nullable=False)
     categoria = Column(Integer, ForeignKey('categorias.id'), nullable=False)
 
     def __init__(self, codigo, descripcion, unidad_medida, cantidad_inventario, precio_unitario, categoria):
@@ -31,6 +31,10 @@ class Productos(Base):
     
     def traer_producto_por_descripcion(descripcion):
         producto = session.query(Productos).filter(Productos.descripcion == descripcion).first()
+        return producto
+    
+    def traer_producto_por_codigo(codigo):
+        producto = session.query(Productos).filter(Productos.codigo == codigo).first()
         return producto
 
     

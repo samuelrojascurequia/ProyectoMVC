@@ -31,6 +31,13 @@ class ProductosController(FlaskController):
                                     ,errorProducto = 'La descripcion no se puede repetir'
                                     ,categorias = categorias
                                     ,producto_almacenar = producto_almacenar)
+            producto_repetido =  Productos.traer_producto_por_codigo(codigo)
+            if producto_repetido:
+                return render_template('formulario_producto.html'
+                                    ,titulo='Crear Producto'
+                                    ,errorCodigo = 'El codigo no se puede repetir'
+                                    ,categorias = categorias
+                                    ,producto_almacenar = producto_almacenar)
             try:
                 Productos.crear_producto(producto_almacenar)
             except:            

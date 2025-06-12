@@ -17,6 +17,9 @@
             <label for="codigo">Codigo</label>
             <input type="text" class="form-control" id="codigo" {% if producto_almacenar %} value="{{ producto_almacenar.codigo }}" {% endif %} name="codigo" placeholder="AAA00000" onblur="validarCodigo ()">
             <span class="alert alert-danger" role="alert" id="errorCodigo" style="display: none;">Error el campo debe tener 3 letras mayusculas y luego numeros</span>
+        {% if errorCodigo %}
+          <span class="alert alert-danger" role="alert" id="errorCodigo"  style="display: block;">{{ errorCodigo }}</span>
+        {% endif %}
           </div>
           <div class="form-group col-md-6"> 
             <label for="cantidad_inventario">Cantidad Inventario</label>

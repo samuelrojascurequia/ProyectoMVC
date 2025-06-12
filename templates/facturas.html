@@ -1,66 +1,57 @@
 {% extends 'layout.html' %}
 
 {% block contenido %}
-    <h1 style="color: darkcyan; font-family: fantasy;">{{titulo}}</h1>   
-        <form action="/se_guardo">
+    <h1 style="color: darkcyan; font-family: fantasy;">{{titulo}}</h1>  
+        <form action="/facturas" method="post"> 
+        <form class="needs-validation" novalidate>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="descripcion">Descripción</label>
-                <input type="text" class="form-control" id="descripcion" placeholder="Describa el producto">
+                <input type="text" class="form-control" name="descripcion" {% if factura_almacenar %} value="{{ factura_almacenar.descripcion }}" {% endif %} id="descripcion" placeholder="Describa el producto">
               </div>
               <div class="form-group col-md-6">
                 <label for="codigo">Codigo</label>
-                <input type="text" class="form-control" id="codigo" placeholder="AAA00000" onblur="validarCodigo ()">
-                <span class="alert alert-danger" role="alert" id="errorCodigo" style="display: none;">Error el campo debe tener 3 letras mayusculas y luego numeros</span>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="cantidad_inventario">Cantidad</label>
-                <input type="number" class="form-control" id="cantidad">
+                <input type="text" class="form-control" name="codigo" {% if factura_almacenar %} value="{{ factura_almacenar.codigo }}" {% endif %} id="codigo" placeholder="AAA00000" onblur="validarCodigo ()">
+                <span class="alert alert-danger" role="alert" id="errorCodigo" style="display: none;">Error el campo debe tener 3 letras mayusculas y luego numeros</span>         
+          {% if errorFactura %}
+              <span class="alert alert-danger" role="alert" id="errorFactura"  style="display: block;">{{ errorFactura }}</span>
+          {% endif %}
               </div>
               <div class="form-group col-md-6">
                 <label for="precio_unitario">Precio Unitario</label>
-                <input type="number" class="form-control" id="precio_unitario">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="IVA">IVA</label>
-                <input type="number" class="form-control" id="IVA">
+                <input type="number" class="form-control" name="precio_unitario" {% if factura_almacenar %} value="{{ factura_almacenar.precio_unitario }}" {% endif %} id="precio_unitario">
               </div>
               <div class="form-group col-md-4">
                 <label for="categoria">Nombre del vendedor</label>
-                <input type="text" class="form-control" id="descripcion" placeholder="Nombre">
+                <input type="text" class="form-control" name="nombre_vendedor" {% if factura_almacenar %} value="{{ factura_almacenar.nombre_vendedor }}" {% endif %} id="nombre_vendedor" placeholder="Nombre">
               </div>
             </div>
     
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="unidad_medida">Metodo de pago</label>
-                <select id="unidad_medida" class="form-control">
-                  <option selected>Por favor seleccione...</option>
-                  <option value="GRS">Efectivo</option>
-                  <option value="UND">Tarjeta</option>
-                  <option value="UND">Transferencia</option>
-                </select>
-              </div>
+            <label for="metodo_pago">Metodo de pago</label>
+            <select id="metodo_pago" name="metodo_pago" class="form-control">
+              <option selected>Por favor seleccione...</option>
+              <option value="efectivo">Efectivo</option>
+              <option value="tarjeta">Tarjeta</option>
+              <option value="tranferencia">Tranferencia</option>
+            </select>
+          </div>
               <div class="form-group col-md-4">
-                <label for="categoria">Fecha de emision</label>
-                <input type="text" class="form-control" id="descripcion" placeholder="AA/MM/DD">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="categoria">Nombre del comprador</label>
-                <input type="text" class="form-control" id="descripcion" placeholder="Nombre">
+                <label for="categoria">Nombre completo del comprador</label>
+                <input type="text" class="form-control" name="nombre_comprador" {% if factura_almacenar %} value="{{ factura_almacenar.nombre_comprador }}" {% endif %} id="nombre_comprador" placeholder="Nombre">
               </div>
 
               <div class="form-group col-md-4">
                 <label for="categoria">Documento de identificacion</label>
-                <input type="text" class="form-control" id="descripcion" placeholder="Numero">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="categoria">Direccion</label>
-                <input type="text" class="form-control" id="descripcion" placeholder="Direccion">
+                <input type="text" class="form-control" name="documento_identidad" {% if factura_almacenar %} value="{{ factura_almacenar.documento_identidad}}" {% endif %} id="documento_identidad" placeholder="Documento">
+          {% if errorDocumento %}
+              <span class="alert alert-danger" role="alert" id="errorDocumento"  style="display: block;">{{ errorDocumento }}</span>
+          {% endif %}
               </div>
               <div class="form-group col-md-4">
                 <label for="categoria">Telefono</label>
-                <input type="text" class="form-control" id="descripcion" placeholder="Telefono">
+                <input type="text" class="form-control" name="telefono" {% if factura_almacenar %} value="{{ factura_almacenar.telefono }}" {% endif %} id="telefono" placeholder="Telefono">
               </div>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
