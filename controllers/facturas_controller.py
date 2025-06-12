@@ -41,3 +41,4 @@ class FacturasController(FlaskController):
             except:            
                 return render_template('facturas.html',titulo='Error al registrar en la base de datos')    
         return render_template('facturas.html', titulo='Crear Factura')
+    
