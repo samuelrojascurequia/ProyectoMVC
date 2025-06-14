@@ -10,7 +10,7 @@ class UsuariosController(FlaskController):
             usuarios = Usuarios.traer_usuarios()
             return render_template('lista_usuarios.html',titulo='Lista usuarios', usuarios = usuarios)
         except:
-            return render_template('lista_clientes.html',titulo='Error de conexión a la base de datos')
+            return render_template('lista_usuarios.html',titulo='Error de conexión a la base de datos')
         
     @app.route ('/formulario_usuarios', methods=['GET','POST'])
     def formulario_usuarios_html():
@@ -31,7 +31,7 @@ class UsuariosController(FlaskController):
                                     ,errorUsuario = 'El documento de identidad no se puede repetir'
                                     ,usuario_almacenar = usuario_almacenar)
             try:
-                Usuarios.crear_usuario(usuario_almacenar)
-            except:            
+                Usuarios.crear_usuario(usuario_almacenar) 
+            except :         
                 return render_template('formulario_usuarios.html',titulo='Error al registrar en la base de datos')    
         return render_template('formulario_usuarios.html', titulo='Crear Usuario')

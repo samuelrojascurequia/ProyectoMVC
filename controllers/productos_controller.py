@@ -24,15 +24,15 @@ class ProductosController(FlaskController):
             precio_unitario = request.form.get('precio_unitario')
             categoria = request.form.get('categoria')
             producto_almacenar = Productos(codigo,descripcion,unidad_medida,cantidad_inventario,precio_unitario,categoria)
-            producto_repetido =  Productos.traer_producto_por_descripcion(descripcion)
-            if producto_repetido:
+            producto_repetido_desc =  Productos.traer_producto_por_descripcion(descripcion)
+            if producto_repetido_desc:
                 return render_template('formulario_producto.html'
                                     ,titulo='Crear Producto'
                                     ,errorProducto = 'La descripcion no se puede repetir'
                                     ,categorias = categorias
                                     ,producto_almacenar = producto_almacenar)
-            producto_repetido =  Productos.traer_producto_por_codigo(codigo)
-            if producto_repetido:
+            producto_repetido_cod =  Productos.traer_producto_por_codigo(codigo)
+            if producto_repetido_cod:
                 return render_template('formulario_producto.html'
                                     ,titulo='Crear Producto'
                                     ,errorCodigo = 'El codigo no se puede repetir'

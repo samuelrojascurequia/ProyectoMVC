@@ -2,12 +2,12 @@
 
 {% block contenido %}
   <h1 style="color: darkcyan; font-family: fantasy;"> {{titulo}}</h1>
-  <form action="/formulario_usuarios" method="post">
-  <form class="needs-validation" novalidate>
+  <form action="/formulario_usuarios" method="post" onsubmit="return validarEmail();"
+   class="needs-validation" novalidate>
         <div class="form-row">
           <div class="col-md-4 mb-3">
             <label for="nombres">Nombres</label>
-            <input type="text" class="form-control" name="nombres" {% if usuario_almacenar %} value="{{ usuario_almacenar.nombres }}" {% endif %} id="nombres" placeholder="Nombres" value="Nombres" required>
+            <input type="text" class="form-control" name="nombres" {% if usuario_almacenar %} value="{{ usuario_almacenar.nombres }}" {% endif %} id="nombres" placeholder="Nombres" required>
             <div class="valid-tooltip">
               Por favor ingresar un nombre
             </div>
@@ -23,9 +23,10 @@
             <label for="email">Email</label>
             <div class="input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"  id="email">@</span>
+                <span class="input-group-text">@</span>
               </div>
-              <input type="text" class="form-control" name="email" {% if usuario_almacenar %} value="{{ usuario_almacenar.email }}" {% endif %} id="email" placeholder="Email" aria-describedby="validationTooltipUsernamePrepend" required>
+              <input type="text" class="form-control" name="email" {% if usuario_almacenar %} value="{{ usuario_almacenar.email }}" {% endif %} id="email" placeholder="Email" aria-describedby="validationTooltipUsernamePrepend" required onblur="validarEmail ()">
+              <span class="alert alert-danger" role="alert" id="errorEmail" style="display: none;">Error el campo debe tener nombre de usuario, @ y dominio</span>
               <div class="invalid-tooltip">
                 Por favor poner un usuario valido.
               </div>
@@ -50,11 +51,14 @@
           <div class="col-md-3 mb-3">
             <label for="documento_identidad">Documento de identidad</label>
             <input type="text" class="form-control" name="documento_identidad" {% if usuario_almacenar %} value="{{ usuario_almacenar.documento_identidad }}" {% endif %} id="documento_identidad" placeholder="Documento de identidad" required>
+          {% if errorUsuario %}
+              <span class="alert alert-danger" role="alert" id="errorUsuario"  style="display: block;">{{ errorUsuario }}</span>
+          {% endif %}
             <div class="invalid-tooltip">
               Indique su numero de identidad.
             </div>
           </div>
-           <div class="form-group col-md-4">
+          <div class="form-group col-md-4">
             <label for="puesto">Puesto</label>
             <select id="puesto" name="puesto" class="form-control">
               <option selected>Por favor seleccione...</option>
@@ -76,4 +80,24 @@
           </div>
         </div>
       </form>
+      <script>
+        function validarEmail() {
+          let campoEmail = document.getElementById("email");
+          let valorEmail = campoEmail.value.trim();
+          let errorEmail = document.getElementById("errorEmail");
+          let expresionEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+
+          if (expresionEmail.test(valorEmail)) {
+            errorEmail.style.display = 'none';
+            return true;
+          } else {
+            errorEmail.style.display = 'block';
+            return false;
+          }
+        }
+
+        function validarFormulario() {
+          return validarEmail(); 
+        }
+      </script>
 {% endblock contenido %}

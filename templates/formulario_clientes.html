@@ -2,7 +2,7 @@
 
 {% block contenido %}
     <h1 style="color: darkcyan; font-family: fantasy;">{{titulo}}</h1>
-    <form action="/formulario_clientes" method="post">
+    <form action="/formulario_clientes" method="post" onsubmit="return validarEmail();">
         <div class="form-row" >
           <div class="col-md-4 mb-3">
             <label for="validationTooltip01">Nombres</label>
@@ -24,7 +24,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
               </div>
-              <input type="text" class="form-control" name="email" {% if cliente_almacenar %} value="{{ cliente_almacenar.email }}" {% endif %} id="validationTooltipUsername" placeholder="Email" aria-describedby="validationTooltipUsernamePrepend" required>
+              <input type="text" class="form-control" name="email" {% if cliente_almacenar %} value="{{ cliente_almacenar.email }}" {% endif %} id="email" placeholder="Email" aria-describedby="validationTooltipUsernamePrepend" required  onblur="validarEmail ()">
+              <span class="alert alert-danger" role="alert" id="errorEmail" style="display: none;">Error el campo debe tener nombre de usuario, @ y dominio</span> 
               <div class="invalid-tooltip">
                 Por favor poner un usuario valido.
               </div>
@@ -73,4 +74,24 @@
         </div>
         <button class="btn btn-primary" type="submit">Enviar</button>
       </form>
+      <script>
+  function validarEmail() {
+    let campoEmail = document.getElementById("email");
+    let valorEmail = campoEmail.value.trim();
+    let errorEmail = document.getElementById("errorEmail");
+    let expresionEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+
+    if (expresionEmail.test(valorEmail)) {
+      errorEmail.style.display = 'none';
+      return true;
+    } else {
+      errorEmail.style.display = 'block';
+      return false;
+    }
+  }
+
+  function validarFormulario() {
+    return validarEmail(); // solo devuelve true si el email es válido
+  }
+</script>
 {% endblock contenido %}

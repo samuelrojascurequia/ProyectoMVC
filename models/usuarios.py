@@ -11,7 +11,7 @@ class Usuarios(Base):
     telefono = Column(String(300), nullable=False)
     puesto = Column(String(300), nullable=False)
     documento_identidad = Column(String(20),unique=True, nullable=False)
-    contraseña = Column(String(300),unique=True, nullable=False)
+    contraseña = Column(String(300), nullable=False)
 
     def __init__(self, nombres, apellidos, email, direccion, telefono, puesto, documento_identidad, contraseña):
         self.nombres = nombres
