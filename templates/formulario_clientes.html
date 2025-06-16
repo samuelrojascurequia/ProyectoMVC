@@ -2,21 +2,23 @@
 
 {% block contenido %}
     <h1 style="color: darkcyan; font-family: fantasy;">{{titulo}}</h1>
-    <form action="/formulario_clientes" method="post" onsubmit="return validarEmail();">
+    <form action="/formulario_clientes" method="post" id="formulario_clientes" name="formulario_clientes" onsubmit="return validarEmail();">
         <div class="form-row" >
           <div class="col-md-4 mb-3">
             <label for="validationTooltip01">Nombres</label>
-            <input type="text" class="form-control" name="nombres" {% if cliente_almacenar %} value="{{ cliente_almacenar.nombres }}" {% endif %} id="validationTooltip01" placeholder="Nombres" value="Nombres" required>
+            <input type="text" class="form-control" name="nombres" {% if cliente_almacenar %} value="{{ cliente_almacenar.nombres }}" {% endif %} id="validationTooltip01" placeholder="Nombres"  required>
             <div class="valid-tooltip">
               Por favor ingresar un nombre
             </div>
+            <span class="alert alert-danger" role="alert" id="errorNombres" style="display: none;">El campo nombres no puede estar vacío.</span>
           </div>
           <div class="col-md-4 mb-3">
             <label for="validationTooltip02">Apellidos</label>
-            <input type="text" class="form-control" name="apellidos" {% if cliente_almacenar %} value="{{ cliente_almacenar.apellidos }}" {% endif %}id="validationTooltip02" placeholder="Apellidos" value="Apellidos" required>
+            <input type="text" class="form-control" name="apellidos" {% if cliente_almacenar %} value="{{ cliente_almacenar.apellidos }}" {% endif %}id="validationTooltip02" placeholder="Apellidos"  required>
             <div class="valid-tooltip">
               por favor ingresar algun caracter
             </div>
+            <span class="alert alert-danger" role="alert" id="errorApellidos" style="display: none;">El campo apellidos no puede estar vacío.</span>
           </div>
           <div class="col-md-4 mb-3">
             <label for="validationTooltipUsername">Email</label>
@@ -39,6 +41,7 @@
             <div class="invalid-tooltip">
               Indique una ciudad valida.
             </div>
+            <span class="alert alert-danger" role="alert" id="errorCiudad" style="display: none;">El campo ciudad no puede estar vacío.</span>
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationTooltip04">Departamento</label>
@@ -46,6 +49,7 @@
             <div class="invalid-tooltip">
               Indique un departamento valido.
             </div>
+            <span class="alert alert-danger" role="alert" id="errorDepartamento" style="display: none;">El campo departamento no puede estar vacío.</span>
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationTooltip05">Direccion</label>
@@ -63,6 +67,7 @@
             <div class="invalid-tooltip">
               Indique un documento valido.
             </div>
+            <span class="alert alert-danger" role="alert" id="errorDocumento" style="display: none;">El campo documento de identidad no puede estar vacío.</span>
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationTooltip08">Telefono</label>
@@ -70,6 +75,7 @@
             <div class="invalid-tooltip">
               Indique un Telefono valido.
             </div>
+            <span class="alert alert-danger" role="alert" id="errorTelefono" style="display: none;">El campo teléfono no puede estar vacío.</span>
           </div>
         </div>
         <button class="btn btn-primary" type="submit">Enviar</button>
@@ -91,7 +97,7 @@
   }
 
   function validarFormulario() {
-    return validarEmail(); // solo devuelve true si el email es válido
+    return validarEmail(); 
   }
 </script>
 {% endblock contenido %}
