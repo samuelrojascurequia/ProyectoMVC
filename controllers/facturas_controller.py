@@ -30,12 +30,6 @@ class FacturasController(FlaskController):
                                     ,titulo='Crear Factura'
                                     ,errorFactura = 'El codigo no se puede repetir'
                                     ,factura_almacenar = factura_almacenar)
-            factura_repetida =  Facturas.traer_factura_por_documento_identidad(documento_identidad)
-            if factura_repetida:
-                return render_template('facturas.html'
-                                    ,titulo='Crear Factura'
-                                    ,errorDocumento = 'El documento de identificacion no se puede repetir'
-                                    ,factura_almacenar = factura_almacenar)
             try:
                 Facturas.crear_factura(factura_almacenar)
             except:            

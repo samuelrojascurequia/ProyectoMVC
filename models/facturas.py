@@ -10,7 +10,7 @@ class Facturas(Base):
     nombre_vendedor = Column(String(300), nullable=False)
     metodo_pago = Column(String(300), nullable=False)
     nombre_comprador = Column(String(300), nullable=False)
-    documento_identidad = Column(String(20),unique=True, nullable=False)
+    documento_identidad = Column(String(20), nullable=False)
     telefono = Column(String(20), nullable=False)
 
     def __init__(self, descripcion, codigo, precio_unitario, nombre_vendedor, metodo_pago, nombre_comprador, documento_identidad, telefono):
@@ -36,6 +36,4 @@ class Facturas(Base):
         factura = session.query(Facturas).filter(Facturas.codigo == codigo).first()
         return factura
     
-    def traer_factura_por_documento_identidad(documento_identidad):
-        factura = session.query(Facturas).filter(Facturas.documento_identidad == documento_identidad).first()
-        return factura
+    
