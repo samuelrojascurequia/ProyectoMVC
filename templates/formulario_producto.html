@@ -76,80 +76,80 @@
           }
         }
       </script>
-    <script>
-          document.addEventListener('DOMContentLoaded', function () {
-            const formulario = document.getElementById('formulario_producto');
+      <script> //Validar campos vacios
+            document.addEventListener('DOMContentLoaded', function () {
+              const formulario = document.getElementById('formulario_producto');
 
-          formulario.addEventListener('submit', function (evento) {
-            let valido = true;
+            formulario.addEventListener('submit', function (evento) {
+              let valido = true;
 
-          // Descripción
-          const descripcion = document.getElementById('descripcion').value.trim();
-          const errorDescripcion = document.getElementById('errorDescripcionJS');
-          if (descripcion === '') {
-            errorDescripcion.style.display = 'block';
-            valido = false;
-          } else {
-            errorDescripcion.style.display = 'none';
-          }
+            // Descripción
+            const descripcion = document.getElementById('descripcion').value.trim();
+            const errorDescripcion = document.getElementById('errorDescripcionJS');
+            if (descripcion === '') {
+              errorDescripcion.style.display = 'block';
+              valido = false;
+            } else {
+              errorDescripcion.style.display = 'none';
+            }
 
-          // Código
-          const codigo = document.getElementById('codigo').value.trim();
-          const errorCodigo = document.getElementById('errorCodigoVacio');
-          if (codigo === '') {
-            errorCodigo.style.display = 'block';
-            valido = false;
-          } else {
-            errorCodigo.style.display = 'none';
-          }
+            // Código
+            const codigo = document.getElementById('codigo').value.trim();
+            const errorCodigo = document.getElementById('errorCodigoVacio');
+            if (codigo === '') {
+              errorCodigo.style.display = 'block';
+              valido = false;
+            } else {
+              errorCodigo.style.display = 'none';
+            }
 
-          // Cantidad Inventario
-          const cantidad = document.getElementById('cantidad_inventario').value.trim();
-          const errorCantidad = document.getElementById('errorCantidad');
-          if (cantidad === '') {
-            errorCantidad.style.display = 'block';
-            valido = false;
-          } else {
-            errorCantidad.style.display = 'none';
-          }
+            // Cantidad Inventario
+            const cantidad = document.getElementById('cantidad_inventario').value.trim();
+            const errorCantidad = document.getElementById('errorCantidad');
+            if (cantidad === '') {
+              errorCantidad.style.display = 'block';
+              valido = false;
+            } else {
+              errorCantidad.style.display = 'none';
+            }
 
-          // Precio Unitario
-          const precio = document.getElementById('precio_unitario').value.trim();
-          const errorPrecio = document.getElementById('errorPrecio');
-          if (precio === '') {
-            errorPrecio.style.display = 'block';
-            valido = false;
-          } else {
-            errorPrecio.style.display = 'none';
-          }
+            // Precio Unitario
+            const precio = document.getElementById('precio_unitario').value.trim();
+            const errorPrecio = document.getElementById('errorPrecio');
+            if (precio === '') {
+              errorPrecio.style.display = 'block';
+              valido = false;
+            } else {
+              errorPrecio.style.display = 'none';
+            }
 
-          // Unidad de Medida
-          const unidad = document.getElementById('unidad_medida').value;
-          const errorUnidad = document.getElementById('errorUnidad');
-          if (unidad === 'Por favor seleccione...') {
-            errorUnidad.style.display = 'block';
-            valido = false;
-          } else {
-            errorUnidad.style.display = 'none';
-          }
+            // Unidad de Medida
+            const unidad = document.getElementById('unidad_medida').value;
+            const errorUnidad = document.getElementById('errorUnidad');
+            if (unidad === 'Por favor seleccione...') {
+              errorUnidad.style.display = 'block';
+              valido = false;
+            } else {
+              errorUnidad.style.display = 'none';
+            }
 
-          // Categoría
-          const categoria = document.getElementById('categoria').value;
-          const errorCategoria = document.getElementById('errorCategoria');
-          if (categoria === 'Por favor seleccione...') {
-            errorCategoria.style.display = 'block';
-            valido = false;
-          } else {
-            errorCategoria.style.display = 'none';
-          }
+            // Categoría
+            const categoria = document.getElementById('categoria').value;
+            const errorCategoria = document.getElementById('errorCategoria');
+            if (categoria === 'Por favor seleccione...') {
+              errorCategoria.style.display = 'block';
+              valido = false;
+            } else {
+              errorCategoria.style.display = 'none';
+            }
 
-          if (!valido) {
-            evento.preventDefault();
-          }
+            if (!valido) {
+              evento.preventDefault();
+            }
+          });
         });
-      });
-    </script>
-    <script> // Ocultar el error de documento si el usuario empieza a escribir algo diferente
+      </script>
+      <script> // Ocultar el error de descripcion si el usuario empieza a escribir algo diferente
         document.addEventListener("DOMContentLoaded", function () {
           const campoDescripcion = document.getElementById("descripcion");
           const errorDescripcionServidor = document.getElementById("errorDescripcion");
@@ -171,8 +171,8 @@
             });
           }
         });
-    </script>
-    <script>
+      </script>
+      <script> //Ocultar mensaje de no dejar campo vacio
           document.addEventListener("DOMContentLoaded", function () {
             // DESCRIPCIÓN
             const campoDescripcion = document.getElementById("descripcion");
@@ -240,7 +240,7 @@
               });
             }
           });
-    </script>
+      </script>
 {% endblock contenido %}
 
 
